@@ -24,11 +24,13 @@ const Root = styled("div")(({ theme }) => ({
     padding: theme.spacing(3),
     textAlign: "center",
     color: theme.palette.text.secondary,
+    marginTop:theme.spacing(10)
   },
   [`& .${classes.avatar}`]: {
     width: theme.spacing(20),
     height: theme.spacing(20),
-    margin: "auto",
+    margin: "auto ",
+    // marginTop:'100px'
   },
   [`& .${classes.section}`]: {
     marginTop: theme.spacing(4),
@@ -42,7 +44,7 @@ const Root = styled("div")(({ theme }) => ({
 
 function About() {
   return (
-    <Root>
+    <Root >
       <Container>
         <Paper className={classes.paper}>
           <Avatar
@@ -69,8 +71,8 @@ function About() {
           <Typography variant="h2" gutterBottom>
             Skills
           </Typography>
-          <Grid container spacing={25} justifyContent="center">
-            <Grid item>
+          <Grid container spacing={15} justifyContent="center" >
+            <Grid item  >
               <Typography variant="body1">
                 <img alt="js" src={js} className={`${classes.img}`} />
                 <br />
@@ -78,7 +80,7 @@ function About() {
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">
+              <Typography variant="">
                 <img alt="react" src={reac} className={`${classes.img}`} />
                 <br />
                 React.js

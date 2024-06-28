@@ -15,7 +15,7 @@ const Root = styled('div')(({ theme }) => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(10),
   },
   [`& .${classes.form}`]: {
     display: 'flex',

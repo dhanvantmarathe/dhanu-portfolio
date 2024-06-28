@@ -2,6 +2,10 @@
 import React from 'react';
 import { Container, Typography, Card, CardContent, CardMedia, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import textutil from './img/textutil.jpeg';
+import calculator from './img/calculator.png';
+
+
 
 const PREFIX = 'Projects';
 const classes = {
@@ -16,7 +20,8 @@ const Root = styled('div')(({ theme }) => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(10),
+    // marginTop:'100px',
   },
   [`& .${classes.card}`]: {
     display: 'flex',
@@ -25,7 +30,9 @@ const Root = styled('div')(({ theme }) => ({
     height: '100%',
   },
   [`& .${classes.media}`]: {
-    height: 140,
+    height: 105,
+    
+   
   },
   [`& .${classes.cardContent}`]: {
     flexGrow: 1,
@@ -34,17 +41,29 @@ const Root = styled('div')(({ theme }) => ({
 
 const projects = [
   {
-    title: 'Project 1',
-    description: 'Description of project 1',
-    image: 'https://via.placeholder.com/150',
+    title: 'Textutil',
+    description: 'This is text convertor using react.js',
+    image: textutil,
+    link: 'https://github.com/dhanvantmarathe/textutil',
+  },
+  {
+    title: 'Simple Calculator',
+    description: 'This is simple calculator using html css and javascript',
+    image: calculator,
     link: '#',
   },
   {
-    title: 'Project 2',
-    description: 'Description of project 2',
-    image: 'https://via.placeholder.com/150',
+    title: 'Simple Calculator',
+    description: 'This is simple calculator using html css and javascript',
+    image: calculator,
     link: '#',
-  },
+  }, 
+  {
+    title: 'Simple Calculator',
+    description: 'This is simple calculator using html css and javascript',
+    image: calculator,
+    link: '#',
+  },     
   // Add more projects here
 ];
 
@@ -53,18 +72,23 @@ function Projects() {
     <Root>
       <Container>
         <Paper className={classes.paper}>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" gutterBottom >
             My Projects
           </Typography>
-          <Grid container spacing={4}>
+          <Grid container spacing={5} mt={1}>
             {projects.map((project, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.media}
                     image={project.image}
+                    
                     title={project.title}
+                    link={project.link}
                   />
+                
+                  <p>_______________________________________________</p>                  
+                  
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {project.title}

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
      
-      <Grid container mt={25} spacing={3}  style={{ height: '80vh' }}>
+      <Grid container mt={15} spacing={3}  style={{ height: '80vh' }}>
         <Grid item xs={12} sm={8} md={6}  >
           <Typography variant="h2" align="center" gutterBottom>
             Welcome to My Portfolio
@@ -36,6 +36,7 @@ function Home() {
           </Grid>
         </Grid>
       </Grid>
+      
   
   );
 }

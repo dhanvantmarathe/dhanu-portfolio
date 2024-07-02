@@ -1,7 +1,11 @@
-// src/Contact.js
+
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Button, Paper } from '@mui/material';
+import axios from 'axios';
+import { TextField, Button, Container, Typography, Paper } from '@mui/material';
+
 import { styled } from '@mui/material/styles';
+
+
 
 const PREFIX = 'Contact';
 const classes = {
@@ -28,60 +32,83 @@ const Root = styled('div')(({ theme }) => ({
   },
 }));
 
-function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send data to server)
-    console.log({ name, email, message });
+    try {
+      await axios.post('http://localhost:5000/contact', formData);
+      alert('Message sent successfully');
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      })
+    } catch (error) {
+      console.error('Error sending message', error);
+      alert('Error sending message');
+    }
   };
 
   return (
     <Root>
-      <Container>
-        <Paper className={classes.paper}>
-          <Typography variant="h4" gutterBottom>
-            Contact Me
-          </Typography>
-          <form className={classes.form} onSubmit={handleSubmit}>
-            <TextField
-              label="Name"
-              variant="outlined"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={classes.field}
-            />
-            <TextField
-              label="Email"
-              variant="outlined"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={classes.field}
-            />
-            <TextField
-              label="Message"
-              variant="outlined"
-              required
-              multiline
-              rows={4}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className={classes.field}
-            />
-            <Button type="submit" variant="contained" color="primary" className={classes.field}>
-              Send Message
-            </Button>
-          </form>
-        </Paper>
-      </Container>
+    <Container > 
+     <Paper className={classes.paper}>
+     <Typography variant="h4" component="h2" gutterBottom>
+        Contact Me
+      </Typography>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <TextField
+          label="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          fullWidth
+          required
+          margin="normal"
+          className={classes.field}
+        />
+        <TextField
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          fullWidth
+          required
+          margin="normal"
+          className={classes.field}
+        />
+        <TextField
+          label="Message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          fullWidth
+          required
+          margin="normal"
+          multiline
+          rows={4}
+          className={classes.field}
+        />
+        <Button type="submit"  variant="contained" color="primary"  className={classes.field}>
+          Send Message
+        </Button>
+      </form>
+     </Paper>
+    </Container>
     </Root>
   );
-}
+};
 
 export default Contact;

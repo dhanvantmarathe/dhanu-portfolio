@@ -1,4 +1,4 @@
-// src/About.js
+
 import React from "react";
 import { Container, Typography, Grid, Paper, Avatar } from "@mui/material";
 import { styled } from "@mui/material/styles";

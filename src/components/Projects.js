@@ -1,9 +1,13 @@
-// src/Projects.js
+
 import React from 'react';
-import { Container, Typography, Card, CardContent, CardMedia, Grid, Paper } from '@mui/material';
+import { Container,Link, Typography, Card, CardContent, CardMedia, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import textutil from './img/textutil.jpeg';
 import calculator from './img/calculator.png';
+import todo from './img/todo.png';
+import quora from './img/quora.png';
+import random from './img/random.png'
+import portfolio from './img/portfolio.png'
 
 
 
@@ -37,34 +41,48 @@ const Root = styled('div')(({ theme }) => ({
   [`& .${classes.cardContent}`]: {
     flexGrow: 1,
   },
+  
 }));
 
 const projects = [
   {
+    title: 'Personal-portfolio',
+    description: 'This is personal portfolio website using react js and material ui and api integration with axios',
+    image: portfolio,
+   
+  },
+  {
     title: 'Textutil',
     description: 'This is text convertor using react.js',
     image: textutil,
-    link: 'https://github.com/dhanvantmarathe/textutil',
+   
   },
   {
     title: 'Simple Calculator',
     description: 'This is simple calculator using html css and javascript',
     image: calculator,
-    link: '#',
+   
   },
   {
-    title: 'Simple Calculator',
-    description: 'This is simple calculator using html css and javascript',
-    image: calculator,
-    link: '#',
+    title: 'Quora UI Clone',
+    description: 'This is simple UI clone of Quora using javascript and react js' ,
+    image: quora,
+   
   }, 
   {
-    title: 'Simple Calculator',
-    description: 'This is simple calculator using html css and javascript',
-    image: calculator,
-    link: '#',
-  },     
-  // Add more projects here
+    title: 'Todo list',
+    description: 'This is simple Todo list using react js with vite',
+    image: todo,
+   
+  },    
+  
+  {
+    title: 'Random User Generator ',
+    description: 'This is Random User Generator using react js with integration with api',
+    image: random,
+  
+  },  
+ 
 ];
 
 function Projects() {
@@ -97,6 +115,8 @@ function Projects() {
                       {project.description}
                     </Typography>
                   </CardContent>
+                  <Link href='https://github.com/dhanvantmarathe?tab=repositories'  underline="hover" target='_blank'>Github link</Link>
+                 
                 </Card>
               </Grid>
             ))}

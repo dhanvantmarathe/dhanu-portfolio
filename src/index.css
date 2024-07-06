@@ -1,0 +1,36 @@
+/* App.css */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+   
+  }
+  
+  code {
+    
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+  
+  .App {
+    text-align: center;
+    padding-top: 64px; /* Adjust this value if your AppBar height changes */
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  /* App.css */
+.navbar-brand, .nav-link {
+  cursor: pointer;
+  color: #333;
+}
+
+.nav-link:hover {
+  background-color: rgb(228, 223, 223);
+  
+}
+
+
+::-webkit-scrollbar { 
+  display: none; 
+}

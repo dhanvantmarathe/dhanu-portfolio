@@ -71,7 +71,7 @@ function About() {
           <Typography variant="h2" gutterBottom>
             Skills
           </Typography>
-          <Grid container spacing={15} justifyContent="center" >
+          <Grid container  spacing={15} justifyContent="center" >
             <Grid item  >
               <Typography variant="body1">
                 <img alt="js" src={js} className={`${classes.img}`} />

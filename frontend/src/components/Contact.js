@@ -47,7 +47,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://portfolio-backend-gold-one.vercel.app/contact', formData);
+      await axios.post('/contact', formData);
       alert('Message sent successfully');
       setFormData({
         name: '',

@@ -10,8 +10,8 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(cors({
-    origin: ['https://portfolio-frontend-rust-three.vercel.app/', https://portfolio-backend-gold-one.vercel.app/], // Your frontend URL
-    methods: 'GET,POST,PUT,DELETE',
+    origin: 'https://portfolio-frontend-rust-three.vercel.app', // Your frontend URL
+    methods: ['GET','POST','PUT','DELETE'],
     credentials: true // Enable this if you need to include cookies in the requests
 }));
 

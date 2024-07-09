@@ -47,12 +47,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('https://portfolio-backend-gold-one.vercel.app/contact').then(()=>{
-        console.log(formData);
-        
-      }).catch(()=>{
-      console.log("error dhanvant ")
-      })
+      await axios.post('https://portfolio-backend-gold-one.vercel.app/contact',formData);
       alert('Message sent successfully');
       setFormData({
         name: '',

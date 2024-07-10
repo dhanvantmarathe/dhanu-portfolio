@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Button, Grid } from "@mui/material";
+import { Typography,  Grid } from "@mui/material";
 // import { Link } from 'react-router-dom';
 import profile from "./img/profile2.png";
 // import Image from 'react-bootstrap/Image';
@@ -7,7 +7,7 @@ import profile from "./img/profile2.png";
 const Sidebar = () => {
   return (
     <div>
-      <Grid container  mt={15} spacing={3} style={{ height: "80vh" }}>
+      <Grid container  mt={17.7} spacing={3} style={{ height: "80vh" }}>
         <Grid ml={1} item xs={7} sm={7} md={6} > 
           <Grid item xs={10} sm={10} md={10}>
           <Typography variant="h3" align="center"  gutterBottom>

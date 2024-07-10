@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 
 
 
+
 const PREFIX = 'Contact';
 const classes = {
   paper: `${PREFIX}-paper`,
@@ -46,8 +47,14 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/contact', formData);
+   try {
+      await axios.post(`http://localhost:${process.env.PORT}/contact`, formData);
+      // fetch(`http://localhost:${process.env.PORT}/contact)`,{formData}).then(()=>{
+      //   console.log(formData.json());
+
+      // }).catch((error)=>{
+      //   console.log(error);
+      // })
       alert('Message sent successfully');
       setFormData({
         name: '',
@@ -59,7 +66,7 @@ const Contact = () => {
       alert('Error sending message');
     }
   };
-
+    
   return (
     <Root>
     <Container > 

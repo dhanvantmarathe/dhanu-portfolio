@@ -61,13 +61,19 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({
-  
-}));
-app.use(helmet());
 
+app.use(helmet());
+app.use(cors({
+  // origin: 'http://localhost:3000/contact', // Your frontend URL
+  // methods: ['GET','POST','PUT','DELETE'],
+  // credentials: true // Enable this if you need to include cookies in the requests
+
+
+}))
 // MongoDB URI from environment variables
-const mongoURI = process.env.MONGO_URI || 'mongodb+srv://marathe8459:CGuJOltNN08n1TJM@cluster0.oco9nvd.mongodb.net/Cluster0?retryWrites=true&w=majority';
+const mongoURI =  'mongodb+srv://marathe8459:CGuJOltNN08n1TJM@cluster0.oco9nvd.mongodb.net/Cluster0?retryWrites=true&w=majority';
+
+    
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, {
@@ -99,6 +105,20 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model('Contact', contactSchema);
 
+//  send the welcome page for the backend
+app.get('/',(req,res)=>{
+  res.send('Welcome to the backend')
+})
+
+// get all the data 
+
+app.get('/contact',async (req,res)=>{
+  const result = await Contact.find();
+  res.send(result);
+ 
+
+})
+
 // Define routes
 app.post('/contact', async (req, res) => {
   const { name, email, message } = req.body;
@@ -120,8 +140,8 @@ app.post('/contact', async (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+app.listen(5000, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
 

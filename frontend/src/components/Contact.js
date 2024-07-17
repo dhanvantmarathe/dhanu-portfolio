@@ -47,23 +47,21 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   try {
-      await axios.post(`http://localhost:${process.env.PORT}/contact`, formData);
-      // fetch(`http://localhost:${process.env.PORT}/contact)`,{formData}).then(()=>{
-      //   console.log(formData.json());
 
-      // }).catch((error)=>{
-      //   console.log(error);
-      // })
+   try {
+      await axios.post(`http://localhost:5000/contact`, formData);
+      
+    
       alert('Message sent successfully');
       setFormData({
         name: '',
         email: '',
         message: '',
       })
+      console.log(formData);
     } catch (error) {
       console.error('Error sending message', error);
-      alert('Error sending message');
+      alert('Error sending message || from contac form');
     }
   };
     

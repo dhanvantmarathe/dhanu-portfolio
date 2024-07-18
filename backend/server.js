@@ -56,12 +56,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config();
+const path = require('path')
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(helmet());
 app.use(cors({
   // origin: 'http://localhost:3000/contact', // Your frontend URL
@@ -105,14 +106,20 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model('Contact', contactSchema);
 
+// using build command
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
 //  send the welcome page for the backend
-app.get('/',(req,res)=>{
-  res.send('Welcome to the backend')
-})
+// app.get('/',(req,res)=>{
+//   res.send('Welcome to the backend')
+// })
 
 // get all the data 
 
-app.get('/contact',async (req,res)=>{
+app.get('/api/info',async (req,res)=>{
   const result = await Contact.find();
   res.send(result);
  
@@ -132,7 +139,9 @@ app.post('/contact', async (req, res) => {
 
   try {
     await newContact.save();
-    res.status(201).json({ message: 'Message received' });
+    res.status(201).json({ message: 'Message received to the database',
+      
+     });
   } catch (error) {
     console.error('Error saving message:', error.message);
     res.status(500).json({ error: 'Error saving message' });
@@ -140,8 +149,8 @@ app.post('/contact', async (req, res) => {
 });
 
 // Start the server
-
-app.listen(5000, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+const port = 5000 || process.env.PORT
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 

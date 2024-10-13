@@ -90,7 +90,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const Header = () => {
   const downloadResume = () => {
-    saveAs(`${process.env.PUBLIC_URL}/dhanu-resume.pdf`, "Dhanvant.pdf");
+    saveAs(`${process.env.PUBLIC_URL}/mern-updated.pdf`, "Dhanvant.pdf");
   };
 
   

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { TextField, Button, Container, Typography, Paper } from '@mui/material';
 
 import { styled } from '@mui/material/styles';
@@ -48,23 +48,51 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   try {
-      await axios.post(`http://localhost:5000/contact`, formData);
+ // try{
+    //   await axios.post(`http://localhost:5000/contact`, formData);
       
     
-      alert('Message sent successfully');
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      })
-      console.log(formData);
-    } catch (error) {
-      console.error('Error sending message', error);
-      alert('Error sending message || from contac form');
-    }
-  };
+    //   alert('Message sent successfully');
+    //   setFormData({
+    //     name: '',
+    //     email: '',
+    //     message: '',
+    //   })
+    //   console.log(formData);
+    // } catch (error) {
+    //   console.error('Error sending message', error);
+    //   alert('Error sending message || from contac form');
+    // }
+
     
+  //};
+  (async () => {
+    const rawResponse = await fetch('http://localhost:5000/contact', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+   try {
+    const content = await rawResponse.json();
+    alert('Message sent successfully');
+    setFormData({
+      name: '',
+      email: '',
+      message: '',
+    })
+
+  console.log(content);
+    
+   } catch (error) {
+    console.log("error sending message",error);
+    alert("error sending message from contact form")
+    
+   }
+  })();
+  }
   return (
     <Root>
     <Container > 

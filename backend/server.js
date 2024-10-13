@@ -107,21 +107,23 @@ const contactSchema = new mongoose.Schema({
 const Contact = mongoose.model('Contact', contactSchema);
 
 // using build command
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 
-//  send the welcome page for the backend
-// app.get('/',(req,res)=>{
-//   res.send('Welcome to the backend')
-// })
+ //send the welcome page for the backend
+app.get('/',(req,res)=>{
+  res.send('Welcome to the backend')
+})
 
 // get all the data 
 
 app.get('/api/info',async (req,res)=>{
   const result = await Contact.find();
+  console.log(result);
   res.send(result);
+  
  
 
 })
